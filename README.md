@@ -1,43 +1,88 @@
-# Mode-characteristics-of-optical-fiber
-# AIM
-To study the mode characteristics of fiber optic cable and observe the lower order Linearly Polarized (LP) modes.
+# Experimental-verification-of-frequency-response-of-Digital-fiber-optic-link
+
+# Fiber Optic Digital Link Experiment (660nm & 950nm)
+
+## AIM
+To study a **660nm & 950nm Fiber Optic Digital Link**.  
+This experiment demonstrates how a digital signal can be transmitted over a fiber cable and reproduced at the receiver end.
 
 ---
 
-# Equipments Required
-1. LASER Source (633 nm – 1mW)  
-2. Source to Fiber Coupler  
-3. Single Mode Fiber  
-4. Fiber Holding Stand  
-5. Opaque Screen  
+## EQUIPMENTS REQUIRED
+- Link-B Kit with power supply  
+- Patch chords  
+- 20 MHz Dual Channel Oscilloscope  
+- 1 MHz Function Generator  
+- 1 Meter Fiber Cable  
 
 ---
 
-# Theory
-<img width="636" height="762" alt="image" src="https://github.com/user-attachments/assets/2db42f3c-7370-4b47-a29b-cbf81f69273f" />
+## THEORY
+Fiber optic links can be used for transmission of both digital and analog signals. A typical fiber optic link consists of three main elements:
 
+1. **Transmitter** – Converts electrical signals into optical signals.  
+2. **Optical Fiber** – Serves as the transmission medium.  
+3. **Receiver** – Converts optical signals back into electrical signals.
 
-# Procedure
-1. Place the optical breadboard on a flat table surface.  
-2. Fix the cylindrical head of the He-Ne laser source onto the breadboard securely.  
-3. Mount the laser to the fiber coupler with its base plate oriented toward the laser exit.  
-4. Switch on the He-Ne laser and align the beam spot centrally on the coupling lens assembly. Tighten screws.  
-5. Check for back reflection from the rod lens of the coupler. Adjust screws until the reflected spot aligns with the laser exit.  
-6. Confirm central alignment using a white card sheet. Adjust screws if the spot is off-center.  
-7. Connect the multimode optical patch cord to the coupler and secure the other end in the fiber holding stand.  
-8. Observe the bright laser spot exiting the fiber. Adjust fiber tip height to ~50 mm above the paper sheet.  
-9. View the multimode speckle pattern on the screen. Adjust screws to refine the pattern. Replace with single mode fiber.  
-10. For single mode fiber, observe blur patterns with lobes (two, three, or four) by fine-tuning the coupler screws.  
+### Transmitter
+- LED-based digital DC coupled transmitters are widely used due to ease of fabrication.  
+- A TTL gate drives an NPN transistor, which modulates the LED (SFH450V or SFH756V).  
+- The LED is turned ON and OFF to represent digital signals.
+
+### Receiver
+- The **SFH-551V** digital optodetector delivers a digital output with minimal external circuitry.  
+- It integrates:
+  - Photodiode  
+  - Transimpedance amplifier  
+  - Comparator  
+  - Level shifter  
+
+**Working principle:**
+- The photodiode converts light into photocurrent.  
+- The transimpedance amplifier converts photocurrent into voltage.  
+- The comparator compares this voltage with a reference derived from a “blind” photodiode for synchronization.  
+- The level shifter provides an open collector output stage with a catch diode to prevent transistor saturation.
 
 ---
-<img width="618" height="722" alt="image" src="https://github.com/user-attachments/assets/b611cde3-a1f1-4bf4-ac7a-9de89f4b6f53" />
 
-# Observation and Calculation
-<img width="442" height="136" alt="image" src="https://github.com/user-attachments/assets/3d0b54ac-b870-412c-9344-ef34bda44f69" />
-<img width="1280" height="688" alt="image" src="https://github.com/user-attachments/assets/cccf9548-dd99-44e3-9209-4272bd7a4f8e" />
-
+## PROCEDURE
+1. Refer to the block diagram and make the required connections.  
+2. Connect the power supply to the Link-B kit with proper polarity and switch ON.  
+3. Set switches and jumpers as follows:  
+   - All fault switches **OFF**  
+   - SW8 → TX position  
+   - SW9 → TX1 position  
+   - SW10 → TTL position  
+   - JP5 → +5V position  
+   - JP6 → shorted  
+   - JP8 → Pulse position  
+4. Feed a **TTL square wave (1 kHz)** from the function generator to the **IN post of Digital Buffer**.  
+5. Connect **OUT of Digital Buffer → TX IN of Transmitter**.  
+6. Loosen the cap of **SFH756V (660nm)**, insert the fiber, and tighten the cap.  
+7. Connect the other end of the fiber to **SFH551V detector** carefully.  
+8. Observe the detected signal at **TTL OUT** on the oscilloscope.  
+9. Vary input frequency to measure digital bandwidth.  
+   - Determine the frequency at which the detector fails to recover the signal (max bit rate).  
+10. Switch SW9 → TX2 position.  
+11. JP7 → +5V position.  
+12. Remove fiber from SFH756V (660nm), loosen cap of **SFH450V (950nm)**, insert fiber, and tighten.  
+13. Observe detected signal at **TTL OUT** on oscilloscope.  
 
 ---
 
-# Result
-The fiber supports 4 Linearly Polarized (LP) modes at the given parameters.
+## TABULATION
+
+<img width="1307" height="1118" alt="image" src="https://github.com/user-attachments/assets/87c876cc-489c-4351-89d1-9fa1d8aad708" />
+
+---
+
+## MODEL GRAPH
+<img width="1300" height="1517" alt="image" src="https://github.com/user-attachments/assets/b99cfc9b-f77f-4974-8c5a-e25424c2b514" />
+
+---
+
+## RESULT
+The digital signal was successfully transmitted through **660nm and 950nm fiber optic links** and reproduced at the receiver end.  
+The maximum bit rate of the digital link was determined experimentally.
+
+
